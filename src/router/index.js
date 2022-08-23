@@ -1,14 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import HomeView from '../views/HomeView.vue'
+const TodosView = () => import(/* webpackChunkName: "todo" */ '@/views/TodosView.vue');
+const CreateView = () => import(/* webpackChunkName: "todo" */ '@/views/CreateView.vue');
+const EditView = () => import(/* webpackChunkName: "todo" */ '@/views/EditView.vue');
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'todos',
+    component: TodosView,
+  },
+  {
+    path: '/create',
+    name: 'create-todo',
+    component: CreateView
+  },
+  {
+    path: '/edit/:id',
+    name: 'get-todo',
+    component: EditView
   },
   {
     path: '/about',
